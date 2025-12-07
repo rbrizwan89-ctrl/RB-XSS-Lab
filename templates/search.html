@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RB XSS Lab - Reflected Search (Vuln)</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+
+<nav class="bg-gray-800 p-4 flex justify-between items-center border-b border-gray-700">
+  <h1 class="text-lg font-bold text-blue-400">Reflected XSS – Vulnerable</h1>
+  <a href="/" class="text-sm text-gray-300 underline">🏠 Home</a>
+</nav>
+
+<main class="p-6 max-w-2xl mx-auto">
+  <form method="get" class="flex space-x-2 mb-4">
+    <input type="text" name="q" class="flex-1 bg-gray-800 border border-gray-700 p-2 rounded text-sm"
+           placeholder="Search something... (try &lt;script&gt;alert('XSS')&lt;/script&gt;)">
+    <button class="px-4 py-2 bg-blue-600 rounded text-sm">Search</button>
+  </form>
+
+  {% if query %}
+    <h2 class="text-xl font-semibold mb-2">Results for:</h2>
+    <!-- VULNERABLE: rendering raw HTML using |safe -->
+    <div class="bg-gray-800 border border-red-500 p-3 rounded text-sm">
+      You searched for: <span class="text-red-400">{{ query|safe }}</span>
+    </div>
+
+    <div class="mt-4 text-xs text-gray-400">
+      <p class="font-semibold text-yellow-400">💣 XSS Hint</p>
+      <p>Try:</p>
+      <code class="block bg-gray-900 p-2 rounded mt-1 text-green-400">
+        &lt;script&gt;alert('RB XSS')&lt;/script&gt;
+      </code>
+    </div>
+  {% endif %}
+</main>
+
+</body>
+</html>

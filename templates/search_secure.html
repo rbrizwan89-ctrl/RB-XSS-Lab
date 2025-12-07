@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RB XSS Lab - Reflected Search (Secure)</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+
+<nav class="bg-green-700 p-4 flex justify-between items-center border-b border-green-500">
+  <h1 class="text-lg font-bold text-black">Reflected XSS – Secure</h1>
+  <a href="/" class="text-sm text-black underline">🏠 Home</a>
+</nav>
+
+<main class="p-6 max-w-2xl mx-auto">
+  <form method="get" class="flex space-x-2 mb-4">
+    <input type="text" name="q" class="flex-1 bg-gray-800 border border-gray-700 p-2 rounded text-sm"
+           placeholder="Safe search...">
+    <button class="px-4 py-2 bg-green-500 text-black rounded text-sm">Search</button>
+  </form>
+
+  {% if query %}
+    <h2 class="text-xl font-semibold mb-2">Results for:</h2>
+    <!-- SAFE: no |safe, Jinja auto-escapes -->
+    <div class="bg-gray-800 border border-green-500 p-3 rounded text-sm">
+      You searched for: <span class="text-green-300">{{ query }}</span>
+    </div>
+
+    <p class="mt-3 text-xs text-gray-400">
+      🛡 Script tags are printed as text, not executed.  
+      This is how output encoding stops Reflected XSS.
+    </p>
+  {% endif %}
+</main>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RB XSS Lab - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center">
+
+<div class="bg-gray-800 border border-gray-700 rounded-2xl p-8 w-full max-w-xl shadow-xl">
+  <h1 class="text-2xl font-bold text-blue-400 mb-2 text-center">RB XSS Vulnerable Lab</h1>
+  <p class="text-center text-gray-300 mb-6 text-sm">
+    Learn Cross-Site Scripting (XSS) with real vulnerable pages – RB Education Hub
+  </p>
+
+  <div class="grid gap-3">
+    <a href="/search" class="bg-blue-600 hover:bg-blue-500 rounded-lg px-4 py-2 text-center text-sm">
+      🔎 Reflected XSS (Vulnerable Search)
+    </a>
+    <a href="/search_secure" class="bg-green-600 hover:bg-green-500 rounded-lg px-4 py-2 text-center text-sm">
+      ✅ Reflected XSS (Secure Search)
+    </a>
+    <a href="/comments" class="bg-yellow-500 hover:bg-yellow-400 rounded-lg px-4 py-2 text-center text-sm text-black">
+      💬 Stored XSS (Vulnerable Comments)
+    </a>
+    <a href="/comments_secure" class="bg-purple-500 hover:bg-purple-400 rounded-lg px-4 py-2 text-center text-sm">
+      🛡 Stored XSS (Secure Comments)
+    </a>
+  </div>
+
+  <div class="mt-6 text-xs text-gray-400">
+    <p class="font-semibold text-yellow-400 mb-1">⚠ Only for Ethical Hacking Practice</p>
+    <p>Do NOT use these techniques on real websites without permission.</p>
+  </div>
+</div>
+
+</body>
+</html>
